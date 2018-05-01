@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 根节点 -->
+<!-- namespace:包名+文件名 -->
+<mapper namespace="com.sunyard.backsystem.dao.login.UserMapper">
+	<!--统计在线人数-->
+	<select id="count" resultType="Integer">
+		select count(1) from user;
+	</select>
+	<!--根据id来查询用户信息-->
+	<select id="queryById" parameterType="String" resultType="com.sunyard.backsystem.model.login.User">
+		select * from user where id = #{id};
+	</select>
+	<!--根据账户来查询用户信息-->
+	<select id="queryByUserName" parameterType="String" resultType="com.sunyard.backsystem.model.login.User">
+		SELECT * FROM user
+		WHERE userName = #{userName}
+	</select>
+	<!--根据用户名和密码来查询 判断登录是否成功-->
+	<select id="queryByUserPwd" parameterType="String" resultType="int">
+		SELECT * FROM user
+		WHERE userName = #{userName} AND password = #{password}
+	</select>
+
+</mapper>

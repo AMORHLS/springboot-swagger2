@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 根节点 -->
+<!-- namespace:包名+文件名 -->
+<mapper namespace="com.sunyard.backsystem.dao.login.RoleMapper">
+	<!--根据id来查询用户信息-->
+	<select id="queryById" parameterType="String" resultType="com.sunyard.backsystem.model.login.Role">
+		select * from role where id = #{id};
+	</select>
+	<!--根据账户来查询用户信息-->
+	<select id="selectByRoleName" parameterType="String" resultType="com.sunyard.backsystem.model.login.Role">
+		SELECT * FROM role
+		WHERE RoleName =#{roleName}
+	</select>
+</mapper>

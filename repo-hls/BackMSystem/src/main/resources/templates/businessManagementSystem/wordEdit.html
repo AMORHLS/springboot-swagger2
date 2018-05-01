@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文本编辑器</title>
+    
+    
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <!--公共样式-->
+  <link rel="stylesheet" href="../../css/common.css" >
+  
+  
+</head>
+<body style="background-color: transparent;">
+	<div class="tableSearch">
+		<div class="inputName">
+		   <lable>卡版名称</lable>
+		   <input type="text">
+		</div>
+		
+		<div class="inputSelect">
+		   <lable> 所属业务 </lable>
+		   <select name="" id="">
+				<option value="">1-中国人寿</option>
+				<option value="">2-广发银行</option>
+				<option value="">3-新华人寿</option>
+		   </select>
+		</div>
+		
+		
+		<div class="inputName">
+		   <lable>备注</lable>
+		   <input type="text">
+		</div>
+
+	</div>
+   
+    <div id="editor">
+        <p>请在此处编辑帮助文档</p>
+    </div>
+    
+   <div style="margin-top:10px;">
+		<button style="background-color:#3c8dbc;border:solid 1px #367fa9;color:#fff;height: 30px;padding:0 10px 0 10px;">保存</button>
+		<button style="padding:0 10px 0 10px;height:30px;">取消</button>
+   </div>
+
+   	
+    <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+    <script type="text/javascript" src="../../js/wangEditor.min.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        // 或者 var editor = new E( document.getElementById('#editor') )
+        editor.create()
+    </script>
+</body>
+</html>

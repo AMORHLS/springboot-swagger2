@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.backsystem.dao.skill.SkillMapper">
+  <!--增加技能-->
+  <insert id="addSkill" parameterType="com.sunyard.backsystem.model.skill.Skill">
+    insert into skill
+    (`name`,`level`,`type`,workCount,creditsExchange,accuracy,examinations,examPassing,exercises,exercisePassing,createTime)
+    VALUES
+    (#{name},#{level},#{type},#{workCount},#{creditsExchange},#{accuracy},#{examinations},#{examPassing},#{exercises},#{exercisePassing},#{createTime})
+  </insert>
+  <!--删除技能-->
+  <delete id="deleteSkill" parameterType="com.sunyard.backsystem.model.skill.Skill">
+      delete from skill where id = #{id}
+  </delete>
+  <!--修改技能-->
+  <update id="updateSkill">
+      update skill
+        <set>
+          <if test="name != null"> name = #{name}</if>
+          <if test="level != null"> level = #{level}</if>
+          <if test="type != null"> type = #{type}</if>
+          <if test="workCount != null"> workCount = #{workCount}</if>
+          <if test="creditsExchange != null"> creditsExchange = #{creditsExchange}</if>
+          <if test="accuracy != null"> accuracy = #{accuracy}</if>
+          <if test="examinations != null"> examinations = #{examinations}</if>
+          <if test="examPassing != null"> examPassing = #{examPassing}</if>
+          <if test="exercises != null"> exercises = #{exercises}</if>
+          <if test="exercisePassing != null"> exercisePassing = #{exercisePassing}</if>
+          <if test="createTime != null"> createTime = #{createTime}</if>
+        </set>
+    where id = #{id}
+  </update>
+  <!--模糊查询-->
+  <select id="queryLike" parameterType="com.sunyard.backsystem.model.skill.Skill" resultType="com.sunyard.backsystem.model.skill.Skill">
+    select * from skill
+    <trim prefix="where" prefixOverrides="and | or">
+      <if test="id != null">and id = #{id}</if>
+      <if test="skillId != null">and skillId = #{skillId}</if>
+      <if test="name != null">and name like = #{name}</if>
+      <if test="level != null">and level = #{level}</if>
+      <if test="type != null">and type = #{type}</if>
+      <if test="workCount != null">and workCount = #{workCount}</if>
+      <if test="creditsExchange != null">and creditsExchange = #{creditsExchange}</if>
+      <if test="accuracy != null">and accuracy = #{accuracy}</if>
+      <if test="examinations != null">and examinations = #{examinations}</if>
+      <if test="examPassing != null">and examPassing = #{examPassing}</if>
+      <if test="exercises != null">and exercises = #{exercises}</if>
+      <if test="exercisePassing != null">and exercisePassing = #{exercisePassing}</if>
+      <if test="createTime != null">and createTime = #{createTime}</if>
+      <if test="createId != null">and createId = #{createId}</if>
+    </trim>
+  </select>
+  <!--查询全部信息-->
+  <select id="queryAll" resultType="com.sunyard.backsystem.model.skill.Skill">
+    select * from skill;
+  </select>
+</mapper>

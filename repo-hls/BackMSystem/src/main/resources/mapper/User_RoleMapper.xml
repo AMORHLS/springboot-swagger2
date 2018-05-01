@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.backsystem.dao.login.User_RoleMapper">
+    <!--统计在线人数-->
+    <select id="countUser" resultType="Integer">
+        select count(1) from user;
+    </select>
+    <resultMap id="userAndRolesResultMap" type="com.sunyard.backsystem.model.login.User">
+        <!--用户信息-->
+        <id column="id" property="id"/>
+        <result column="userId" property="userId"/>
+        <result column="account" property="account"/>
+        <result column="userName" property="userName"/>
+        <result column="birthdate" property="birthdate"/>
+        <result column="password" property="password"/>
+        <result column="phoneNumber" property="phoneNumber"/>
+        <result column="portrait" property="portrait"/>
+        <result column="sex" property="sex"/>
+        <result column="status" property="status"/>
+        <result column="type" property="type"/>
+        <result column="uCreateId" property="createId"/>
+        <result column="uCreateTime" property="createTime"/>
+        <result column="lastlogintime" property="lastlogintime"/>
+
+        <collection property="roles" ofType="com.sunyard.backsystem.model.login.Role">
+            <id column="roleId" property="roleId"></id>
+            <result column="rCreateId" property="createId"/>
+            <result column="rCreateTime" property="createTime"/>
+            <result column="rStatus" property="status"/>
+            <result column="rType" property="type"/>
+            <result column="customField" property="customField"/>
+            <result column="roleName" property="roleName"/>
+        </collection>
+    </resultMap>
+    <sql id="Query_User_Where">
+    </sql>
+    <select id="queryUserRole" parameterType="String" resultMap="userAndRolesResultMap">
+           SELECT
+	u.id,
+	u.account,
+	u.birthdate,
+	u.createId uCreateId,
+	u.createTime uCreateTime,
+	u.lastLoginTime,
+	u.`password`,
+	u.phoneNumber,
+	u.portrait,
+	u.sex,
+	u.`status`,
+	u.type,
+	u.userId,
+	u.userName,
+	r.roleId,
+	r.createId rCreateId,
+	r.createTime rCreateTime,
+	r.customField,
+	r.roleName,
+	r.`status` rStatus,
+	r.type rType
+FROM
+	`user` u,
+	role r,
+	user_role ur
+WHERE
+	u.userId = ur.userId
+AND r.roleId = ur.roleId
+AND userName = #{userName}
+    </select>
+</mapper>

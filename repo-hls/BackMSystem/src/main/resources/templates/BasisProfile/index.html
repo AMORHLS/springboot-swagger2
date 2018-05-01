@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台综合管理系统</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->  <!--<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">-->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../css/skin-blue.min.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>雅达</b></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>后台综合管理系统</b></span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Messages: style can be found in dropdown.less-->
+          <li class="dropdown messages-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-envelope-o"></i>
+              <span class="label label-success">4</span>
+            </a>
+          </li>
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+          </li>
+          <!-- Tasks: style can be found in dropdown.less -->
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs">流氓记忆 &nbsp;&nbsp;<i class="fa fa-angle-right"></i></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../../images/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>流氓记忆</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i> <span>基础配置</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="../index.html"><i class="fa fa-circle-o"></i> 用户管理</a></li>
+            <li><a href="userManagement.html"><i class="fa fa-circle-o"></i> 部门管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 角色管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 分类管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 资源管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i>模块管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 附加属性</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i>日志管理</a></li>
+            <li class="treeview">
+	            <a href="#">
+	            <i class="fa fa-circle-o"></i>技能管理
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+	            </a>
+	            <ul class="treeview-menu">
+	            	<li><a href="">系统技能维护</a></li>
+	            	<li><a href="">人员技能维护</a></li>
+	            	<li><a href="">技能等级配置</a></li>
+	            </ul>
+	            
+            </li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-calendar-o"></i>
+            <span>业务管理系统</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> 客户管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 流程管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 时段管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 规则字典</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 规则字典项</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 卡板帮助</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 技能帮助</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i>其他设置</a></li>
+
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa  fa-gavel"></i>
+            <span>运维管理系统</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> 监控服务器管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 监控业务管理</a></li>
+            <li class="treeview">
+				<a href="#">
+					<i class="fa fa-circle-o"></i> 功能配置管理
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+           		</a>
+         		
+          		<ul class="treeview-menu">
+	            	<li><a href="">基础动作管理</a></li>
+	            	<li><a href="">功能管理</a></li>
+	            </ul>
+            </li>
+            <li class="treeview">
+				<a href="#">
+					<i class="fa fa-circle-o"></i> 业务运维管理
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+           		</a>
+         		
+          		<ul class="treeview-menu">
+	            	<li><a href="">业务批次删除</a></li>
+	            	<li><a href="">查询异常状态</a></li>
+	            </ul>
+            </li>
+            <li class="treeview">
+				<a href="#">
+					<i class="fa fa-circle-o"></i> 监控配置管理
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+           		</a>
+         		
+          		<ul class="treeview-menu">
+	            	<li><a href="">监控项配置</a></li>
+	            	<li><a href="">通知模版</a></li>
+	            	<li><a href="">监控组配置</a></li>
+	            </ul>
+            </li>
+            
+            <li class="treeview">
+				<a href="#">
+					<i class="fa fa-circle-o"></i> 监控配置管理
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-left pull-right"></i>
+					</span>
+           		</a>
+         		
+          		<ul class="treeview-menu">
+	            	<li><a href="">业务量监控</a></li>
+	            	<li><a href="">异常状态监控</a></li>
+	            </ul>
+            </li>
+
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i>
+            <span>培训管理系统</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> 试题管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 成绩查询</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 资料培训</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 转正申请</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-bar-chart"></i>
+            <span>报表管理系统</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> 跑批报表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 统一报表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 产量总表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 表单类型统计表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 任务时效统计表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 批次返回明显表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 历史批次返回明显表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 录入员产量统计表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 纠错员产量统计表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 版面员产量统计表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 全单员产量统计表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 差错字段统计表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 差错字段明细表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 成品规则明细表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 个人统计表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 个人差错明细表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 操作员历史差错信息表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 业务时段监控表</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 月产量统计表</a></li>
+         </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-database"></i>
+            <span>财务管理系统</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> 积分管理</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 结算设置</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 待处理申请提现</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> 已处理申请提现</a></li>
+
+          </ul>
+        </li>
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-gear"></i>
+            <span>系统设置</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+
+          </a>
+        </li>
+        
+
+        
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+  </div>
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+<!--  <div class="control-sidebar-bg"></div>-->
+  </div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../js/jquery.min.js"></script>
+
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+
+<script src="../../js/adminlte.min.js"></script>
+</body>
+</html>

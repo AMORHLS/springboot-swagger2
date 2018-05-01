@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunyard.backsystem.dao.department.DepartmentMapper">
+  <resultMap id="BaseResultMap" type="com.sunyard.backsystem.model.department.Department">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="cascadeId" jdbcType="VARCHAR" property="cascadeid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="hotKey" jdbcType="VARCHAR" property="hotkey" />
+    <result column="parentName" jdbcType="VARCHAR" property="parentname" />
+    <result column="isLeaf" jdbcType="TINYINT" property="isleaf" />
+    <result column="isAutoExpand" jdbcType="TINYINT" property="isautoexpand" />
+    <result column="iconName" jdbcType="VARCHAR" property="iconname" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="bizCode" jdbcType="VARCHAR" property="bizcode" />
+    <result column="customField1" jdbcType="VARCHAR" property="customfield1" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="createId" jdbcType="INTEGER" property="createid" />
+    <result column="sortNo" jdbcType="INTEGER" property="sortno" />
+    <result column="parentId" jdbcType="CHAR" property="parentid" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sunyard.backsystem.model.department.Department">
+    <result column="customCode" jdbcType="LONGVARCHAR" property="customcode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, cascadeId, name, hotKey, parentName, isLeaf, isAutoExpand, iconName, status, 
+    type, bizCode, customField1, createTime, createId, sortNo, parentId, updatetime
+  </sql>
+  <sql id="Blob_Column_List">
+    customCode
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.sunyard.backsystem.model.department.DepartmentExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from department
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.sunyard.backsystem.model.department.DepartmentExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from department
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="startRow != null and pageSize != null and pageSize != 0">
+      limit #{startRow},#{pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from department
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from department
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sunyard.backsystem.model.department.DepartmentExample">
+    delete from department
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sunyard.backsystem.model.department.Department">
+    insert into department (id, cascadeId, name, 
+      hotKey, parentName, isLeaf, 
+      isAutoExpand, iconName, status, 
+      type, bizCode, customField1, 
+      createTime, createId, sortNo, 
+      parentId, updatetime, customCode
+      )
+    values (#{id,jdbcType=CHAR}, #{cascadeid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{hotkey,jdbcType=VARCHAR}, #{parentname,jdbcType=VARCHAR}, #{isleaf,jdbcType=TINYINT}, 
+      #{isautoexpand,jdbcType=TINYINT}, #{iconname,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{bizcode,jdbcType=VARCHAR}, #{customfield1,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{createid,jdbcType=INTEGER}, #{sortno,jdbcType=INTEGER}, 
+      #{parentid,jdbcType=CHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{customcode,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sunyard.backsystem.model.department.Department">
+    insert into department
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cascadeid != null">
+        cascadeId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="hotkey != null">
+        hotKey,
+      </if>
+      <if test="parentname != null">
+        parentName,
+      </if>
+      <if test="isleaf != null">
+        isLeaf,
+      </if>
+      <if test="isautoexpand != null">
+        isAutoExpand,
+      </if>
+      <if test="iconname != null">
+        iconName,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="bizcode != null">
+        bizCode,
+      </if>
+      <if test="customfield1 != null">
+        customField1,
+      </if>
+      <if test="createtime != null">
+        createTime,
+      </if>
+      <if test="createid != null">
+        createId,
+      </if>
+      <if test="sortno != null">
+        sortNo,
+      </if>
+      <if test="parentid != null">
+        parentId,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="customcode != null">
+        customCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="cascadeid != null">
+        #{cascadeid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hotkey != null">
+        #{hotkey,jdbcType=VARCHAR},
+      </if>
+      <if test="parentname != null">
+        #{parentname,jdbcType=VARCHAR},
+      </if>
+      <if test="isleaf != null">
+        #{isleaf,jdbcType=TINYINT},
+      </if>
+      <if test="isautoexpand != null">
+        #{isautoexpand,jdbcType=TINYINT},
+      </if>
+      <if test="iconname != null">
+        #{iconname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="bizcode != null">
+        #{bizcode,jdbcType=VARCHAR},
+      </if>
+      <if test="customfield1 != null">
+        #{customfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createid != null">
+        #{createid,jdbcType=INTEGER},
+      </if>
+      <if test="sortno != null">
+        #{sortno,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=CHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customcode != null">
+        #{customcode,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sunyard.backsystem.model.department.DepartmentExample" resultType="java.lang.Long">
+    select count(*) from department
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update department
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.cascadeid != null">
+        cascadeId = #{record.cascadeid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hotkey != null">
+        hotKey = #{record.hotkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentname != null">
+        parentName = #{record.parentname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isleaf != null">
+        isLeaf = #{record.isleaf,jdbcType=TINYINT},
+      </if>
+      <if test="record.isautoexpand != null">
+        isAutoExpand = #{record.isautoexpand,jdbcType=TINYINT},
+      </if>
+      <if test="record.iconname != null">
+        iconName = #{record.iconname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.bizcode != null">
+        bizCode = #{record.bizcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customfield1 != null">
+        customField1 = #{record.customfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null">
+        createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createid != null">
+        createId = #{record.createid,jdbcType=INTEGER},
+      </if>
+      <if test="record.sortno != null">
+        sortNo = #{record.sortno,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentid != null">
+        parentId = #{record.parentid,jdbcType=CHAR},
+      </if>
+      <if test="record.updatetime != null">
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.customcode != null">
+        customCode = #{record.customcode,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update department
+    set id = #{record.id,jdbcType=CHAR},
+      cascadeId = #{record.cascadeid,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      hotKey = #{record.hotkey,jdbcType=VARCHAR},
+      parentName = #{record.parentname,jdbcType=VARCHAR},
+      isLeaf = #{record.isleaf,jdbcType=TINYINT},
+      isAutoExpand = #{record.isautoexpand,jdbcType=TINYINT},
+      iconName = #{record.iconname,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
+      bizCode = #{record.bizcode,jdbcType=VARCHAR},
+      customField1 = #{record.customfield1,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      createId = #{record.createid,jdbcType=INTEGER},
+      sortNo = #{record.sortno,jdbcType=INTEGER},
+      parentId = #{record.parentid,jdbcType=CHAR},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      customCode = #{record.customcode,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update department
+    set id = #{record.id,jdbcType=CHAR},
+      cascadeId = #{record.cascadeid,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      hotKey = #{record.hotkey,jdbcType=VARCHAR},
+      parentName = #{record.parentname,jdbcType=VARCHAR},
+      isLeaf = #{record.isleaf,jdbcType=TINYINT},
+      isAutoExpand = #{record.isautoexpand,jdbcType=TINYINT},
+      iconName = #{record.iconname,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      type = #{record.type,jdbcType=INTEGER},
+      bizCode = #{record.bizcode,jdbcType=VARCHAR},
+      customField1 = #{record.customfield1,jdbcType=VARCHAR},
+      createTime = #{record.createtime,jdbcType=TIMESTAMP},
+      createId = #{record.createid,jdbcType=INTEGER},
+      sortNo = #{record.sortno,jdbcType=INTEGER},
+      parentId = #{record.parentid,jdbcType=CHAR},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sunyard.backsystem.model.department.Department">
+    update department
+    <set>
+      <if test="cascadeid != null">
+        cascadeId = #{cascadeid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hotkey != null">
+        hotKey = #{hotkey,jdbcType=VARCHAR},
+      </if>
+      <if test="parentname != null">
+        parentName = #{parentname,jdbcType=VARCHAR},
+      </if>
+      <if test="isleaf != null">
+        isLeaf = #{isleaf,jdbcType=TINYINT},
+      </if>
+      <if test="isautoexpand != null">
+        isAutoExpand = #{isautoexpand,jdbcType=TINYINT},
+      </if>
+      <if test="iconname != null">
+        iconName = #{iconname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="bizcode != null">
+        bizCode = #{bizcode,jdbcType=VARCHAR},
+      </if>
+      <if test="customfield1 != null">
+        customField1 = #{customfield1,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createid != null">
+        createId = #{createid,jdbcType=INTEGER},
+      </if>
+      <if test="sortno != null">
+        sortNo = #{sortno,jdbcType=INTEGER},
+      </if>
+      <if test="parentid != null">
+        parentId = #{parentid,jdbcType=CHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customcode != null">
+        customCode = #{customcode,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sunyard.backsystem.model.department.Department">
+    update department
+    set cascadeId = #{cascadeid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      hotKey = #{hotkey,jdbcType=VARCHAR},
+      parentName = #{parentname,jdbcType=VARCHAR},
+      isLeaf = #{isleaf,jdbcType=TINYINT},
+      isAutoExpand = #{isautoexpand,jdbcType=TINYINT},
+      iconName = #{iconname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      bizCode = #{bizcode,jdbcType=VARCHAR},
+      customField1 = #{customfield1,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createId = #{createid,jdbcType=INTEGER},
+      sortNo = #{sortno,jdbcType=INTEGER},
+      parentId = #{parentid,jdbcType=CHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      customCode = #{customcode,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sunyard.backsystem.model.department.Department">
+    update department
+    set cascadeId = #{cascadeid,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      hotKey = #{hotkey,jdbcType=VARCHAR},
+      parentName = #{parentname,jdbcType=VARCHAR},
+      isLeaf = #{isleaf,jdbcType=TINYINT},
+      isAutoExpand = #{isautoexpand,jdbcType=TINYINT},
+      iconName = #{iconname,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      bizCode = #{bizcode,jdbcType=VARCHAR},
+      customField1 = #{customfield1,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      createId = #{createid,jdbcType=INTEGER},
+      sortNo = #{sortno,jdbcType=INTEGER},
+      parentId = #{parentid,jdbcType=CHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

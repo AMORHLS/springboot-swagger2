@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文本编辑器</title>
+    
+    
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <!--公共样式-->
+  <link rel="stylesheet" href="../../css/common.css" >
+  
+  
+</head>
+<body style="background-color: transparent;">
+	<div class="tableSearch">
+		
+		<div class="inputSelect">
+		   <lable> 技能类型 </lable>
+		   <select name="" id="">
+				<option value="">版面</option>
+				<option value="">录入</option>
+				<option value="">全单</option>
+		   </select>
+		</div>
+		
+		<div class="inputSelect">
+		   <lable> 技能名称 </lable>
+		   <select name="" id="">
+				<option value="">简单类-数字录入</option>
+				<option value="">复杂类-文本录入</option>
+				<option value="">地址录入</option>
+		   </select>
+		</div>
+		
+		
+		<div class="inputName">
+		   <lable>备注</lable>
+		   <input type="text">
+		</div>
+
+	</div>
+   
+    <div id="editor">
+        <p>请在此处编辑帮助文档</p>
+    </div>
+    
+   <div style="margin-top:10px;">
+		<button style="background-color:#3c8dbc;border:solid 1px #367fa9;color:#fff;height: 30px;padding:0 10px 0 10px;">保存</button>
+		<button style="padding:0 10px 0 10px;height:30px;">取消</button>
+   </div>
+
+   	
+    <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+    <script type="text/javascript" src="../../js/wangEditor.min.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        // 或者 var editor = new E( document.getElementById('#editor') )
+        editor.create()
+    </script>
+</body>
+</html>
